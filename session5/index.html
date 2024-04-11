@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        position: relative;
+        top: 60px;
+        right: 270px;
+    }
+</style>
+
+<body>
+    <h2>The word is:<span>***</span></h2>
+    <input type="text">
+    <span>Remaining guess:5</span>
+    <button>guess</button>
+</body>
+<script>
+    // math.floor:lam tron xuong
+    // math.ceil:lam tron len
+    let startElement = document.getElementById("start");
+
+    let arr = ["hoa", "hao", "han", "nam", "anh", "tan", "thu", "tai", "tho"];
+    //index:lay chi so ngau nhien
+    let index = (Math.floor(Math.random() * arr.length));
+    // phan tu ngau nhien cua mang
+    let element = arr[index];
+    // do dai cua phan tu ngau nhien
+    let elementLength = element.length;
+    // lap qua de hien thi so sao tuong ung 
+    for (let i = 0; i < element.length; i++) {
+        startElement.innerHTML = `${i}`
+    }
+    console.log(element);
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<body lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container{
+        display: inline-flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The word is : <span id="stars">***</span></h1>
+    <div class="container">
+      <input id="input" type="text" />
+      <span style="margin-left: 50px;">Remaining guess : <span id="number">0</span></span>
+    </div>
+
+  <script>
+    let starElement = document.getElementById("stars");
+    let array = ["hoa", "hao", "han", "nam", "anh", "tan", "thu", "tai", "tho"];
+    let countElement = document.getElementById("number");
+    let count = 3;
+    let inputElement = document.getElementById("input");
+    let startElement = document.getElementById("play");
+    let playAgain = document.getElementById("replay")
+    document.getElementById("replay").style.display = 'none';
+    // Lấy chỉ số ngẫu nhiên
+    let index = Math.floor(Math.random() * array.length);
+    // Phần tử ngẫu nhiên của mảng
+    let element = array[index];
+    console.log(element);
+
+    // Độ dài của phần tử ngẫu nhiên
+    let elementLength = element.length;
+
+    let text = "";
+
+    // Lặp qua để hiển thị số sao tương ứng với độ dài của phần tử ngẫu nhiên
+    for (let i = 0; i < elementLength; i++) {
+      text += " * ";
+    }
+    starElement.innerHTML = text;
+    console.log(text);
+    function startGame() {
+      let guess = inputElement.value;
+      if (guess === element) {
+        starElement.innerHTML = element;
+        starElement.setAttribute('readonly', 'true');
+        alert("YOU WIN !")
+      } else {
+        count--;
+        countElement.innerHTML = count;
+        if (count === 0) {
+          starElement.innerHTML = element;
+          starElement.setAttribute('readonly', 'true');
+          alert('Game Over !');
+          play.style.display = 'none';
+        }
+      }
+    }
+
+ 
+  
+  </script>
+  </body>
+</html>
